@@ -1,12 +1,22 @@
+def decoder(password):
+    string = ""
 
+    for i in password:
+        temp = int(i)
+        if temp == 0:
+            temp = 7
+        elif temp == 1:
+            temp = 8
+        elif temp == 2:
+            temp = 9
+        else:
+            temp -= 3
+        string += str(temp)
 
-
-
-
+    return string
 
 
 def encoder(password):
-
     string = ""
 
     for i in password:
@@ -38,7 +48,6 @@ def main():
         print(f'Menu\n-------------')
         print(f'1. Encode\n2. Decode\n3. Quit\n')
 
-
         option = int(input("Please enter an option: "))
 
         if option == 1:
@@ -46,11 +55,14 @@ def main():
             encoded_password = encoder(password)
 
             print("Your password has been encoded and stored!")
-
+            print(f'{encoded_password}')
 
         if option == 2:
-            pass
+            password = input("Please enter your password to decode: ")
+            decoded_password = decoder(password)
 
+            print("Your password has been decoded and stored!")
+            print(f'{decoded_password}')
 
         if option == 3:
             main = False
@@ -58,6 +70,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-def function():
-    pass
